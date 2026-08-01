@@ -362,9 +362,6 @@ ros2 topic echo /amcl_pose --once
 | **Storage Area** | 20.000934662165207 | -2.415622611057596 | 0.0 | -0.9763743935459531 | 0.21608573212447954 | Second navigation goal |
 | **Shipping Station** | -5.930928476565102 | -5.406362903539103 | 0.0 | -0.9794818259122806 | 0.20153251029931818 | Third navigation goal |
 
-> **Note:** the Home pose's orientation was initially captured as an all-zero quaternion
-> (`x:0, y:0, z:0, w:0`), which is not a valid rotation — it indicated AMCL had not yet converged at that
-> capture. It was corrected to the identity quaternion (`w:1.0`) before being used in the mission.
 
 ---
 
@@ -464,36 +461,7 @@ BT navigator handing off to the controller server and successfully reaching the 
 [controller_server-4] [WARN] [1785562234.915175850] [controller_server]: No progress checker was specified in parameter 'current_progress_checker'. Server will use only plugin loaded progress_checker . This warning will appear once.
 [controller_server-4] [INFO] [1785562236.016767240] [controller_server]: Passing new path to controller.
 [controller_server-4] [INFO] [1785562237.016783511] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562238.016771093] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562239.116911314] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562240.116766964] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562241.116776723] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562242.216782701] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562243.216776458] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562244.216813754] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562245.316767998] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562246.316773733] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562247.316765775] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562248.316774201] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562249.416763982] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562250.416765699] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562251.416773868] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562252.516773141] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562253.516770135] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562254.516821147] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562255.516785494] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562256.617248607] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562257.616780375] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562258.616773339] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562259.616770016] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562260.716773771] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562261.716772006] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562262.716773535] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562263.816776359] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562264.816857483] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562265.816775557] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562266.916765934] [controller_server]: Passing new path to controller.
-[controller_server-4] [INFO] [1785562267.919872431] [controller_server]: Passing new path to controller.
+....
 [controller_server-4] [INFO] [1785562268.916841593] [controller_server]: Passing new path to controller.
 [controller_server-4] [INFO] [1785562269.916780461] [controller_server]: Passing new path to controller.
 [controller_server-4] [INFO] [1785562271.016774739] [controller_server]: Passing new path to controller.
