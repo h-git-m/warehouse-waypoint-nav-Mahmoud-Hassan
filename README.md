@@ -402,7 +402,7 @@ localized at the Charging Station.
 
 ---
 
-## 11. RViz Waypoint-Marker Behavior
+## 11. RViz Waypoint-Marker Behavior and Running the Waypoints Package
 
 Implemented in the `warehouse_waypoints` package (`waypoint_mission.py`):
 
@@ -417,9 +417,7 @@ Implemented in the `warehouse_waypoints` package (`waypoint_mission.py`):
 
 ---
 
-## 12. Running the Waypoints Package
-
-With `warehouse_world` already running (Section 4), bring up Nav2 and then the waypoint mission node in
+With `warehouse_world` already running (Section 4), bring up Nav2 (Section 8) and then the waypoint mission node in
 two separate terminals:
 
 ```bash
@@ -442,7 +440,7 @@ autonomous mission.
 
 ---
 
-## 13. Required Terminal Output
+## 12. Required Terminal Output
 
 **Waypoint mission node output (actual captured run):**
 
@@ -496,7 +494,7 @@ BT navigator handing off to the controller server and successfully reaching the 
 
 ---
 
-## 14. Problems Encountered and Their Solutions
+## 13. Problems Encountered and Their Solutions
 
 | Problem | Root Cause | Solution |
 |---|---|---|
@@ -506,7 +504,7 @@ BT navigator handing off to the controller server and successfully reaching the 
 | Revisiting a previously-mapped area showed walls "shifted" from their earlier scan position | `loop_search_maximum_distance` (default 3.0 m) was smaller than the raw odometry drift accumulated over a long run, so SLAM Toolbox couldn't find loop-closure matches to correct it | Increased `loop_search_maximum_distance` to 8.0; verified `map → odom` correction magnitude dropped significantly on repeat test |
 | Parts of the generated map stayed incomplete, with radiating "starburst" gaps in large open aisles | Default LiDAR max range (3.5 m) was too short to reach walls across wide warehouse aisles | Increased the LiDAR's `<range><max>` in `model.sdf`, and matched `max_laser_range` in both `slam_toolbox` and `amcl.yaml` to 12.0 |
 | Nav2 planner reported "no path found" through some warehouse aisles | `inflation_radius` (0.5) was inflating obstacles enough to fully close otherwise-navigable gaps | Reduced `inflation_radius` to 0.2 in `planner_server.yaml`, and enlarged the local costmap footprint to 6×6 in `controller_server.yaml` for more planning headroom |
-| One recorded waypoint (Home) had an invalid quaternion (`x:0, y:0, z:0, w:0`) | `/amcl_pose` was echoed before AMCL had converged on a valid pose estimate | Replaced with the identity quaternion (`w:1.0`) before using it as a Nav2 goal |
+
 
 ---
 
