@@ -101,10 +101,9 @@ warehouse-waypoint-nav-Mahmoud-Hassan/
 ## 3. Workspace Build Instructions
 
 ```bash
-mkdir -p ~/workspaces/turtlebot_ws/src
 cd ~/workspaces/turtlebot_ws/src
 
-# Clone this repository and any required upstream packages (warehouse_world, turtlebot3*, slam_toolbox, etc.)
+# Clone this repository package (warehouse_world)
 git clone https://github.com/ETGAH/warehouse_world.git
 
 cd ~/workspaces/turtlebot_ws
