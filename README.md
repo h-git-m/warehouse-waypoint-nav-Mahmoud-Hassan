@@ -358,9 +358,9 @@ ros2 topic echo /amcl_pose --once
 | Name | x | y | z | qz | qw | Notes |
 |---|---|---|---|---|---|---|
 | **Home** (Charging Station) | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 | Mission start and final destination |
-| **Loading Station** | 7.782053842839245 | 7.420772652392393 | 0.0 | 0.990783724437887 | 0.1354533550303916 | Wait here 30 seconds |
-| **Storage Area** | 20.000934662165207 | -2.415622611057596 | 0.0 | -0.9763743935459531 | 0.21608573212447954 | Second navigation goal |
-| **Shipping Station** | -5.930928476565102 | -5.406362903539103 | 0.0 | -0.9794818259122806 | 0.20153251029931818 | Third navigation goal |
+| **Loading Station** | 7.782053842839245 | 7.420772652392393 | 0.0 | 0.0 | 1.0 | Wait here 30 seconds |
+| **Storage Area** | 20.000934662165207 | -2.415622611057596 | 0.0 | 0.0 | 1.0 | Second navigation goal |
+| **Shipping Station** | -5.930928476565102 | -5.406362903539103 | 0.0 | 0.0 | 1.0 | Third navigation goal |
 
 
 ---
