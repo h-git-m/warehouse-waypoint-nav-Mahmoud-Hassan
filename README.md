@@ -105,7 +105,7 @@ mkdir -p ~/workspaces/turtlebot_ws/src
 cd ~/workspaces/turtlebot_ws/src
 
 # Clone this repository and any required upstream packages (warehouse_world, turtlebot3*, slam_toolbox, etc.)
-git clone <this-repo-url>
+git clone <[this-repo-url](https://github.com/ETGAH/warehouse_world.git)>
 
 cd ~/workspaces/turtlebot_ws
 colcon build
