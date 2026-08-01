@@ -31,7 +31,7 @@ autonomous multi-waypoint mission execution with live RViz marker feedback.
 ## 2. Repository and Package Structure
 
 ```
-warehouse-waypoint-nav-[YOUR-NAME]/
+warehouse-waypoint-nav-Mahmoud-Hassan/
 ├── robot_navigation/
 │   ├── config/
 │   │   ├── amcl.yaml
@@ -41,12 +41,14 @@ warehouse-waypoint-nav-[YOUR-NAME]/
 │   │   └── bt_navigator.yaml
 │   ├── launch/
 │   │   └── nav2_bringup.launch.py
-│   ├── maps/
+│   ├── map/
 │   │   ├── warehouse_world_map.pgm
 │   │   └── warehouse_world_map.yaml
+│   ├── scripts/
+│   │   └── send_goal.py
 │   ├── rviz/
-│   │   ├── AMCL.rviz
-│   │   └── NAV2.rviz
+│   │   ├── AMCL_warehouse.rviz
+│   │   └── Nav2.rviz
 │   ├── CMakeLists.txt
 │   └── package.xml
 ├── warehouse_waypoints/
@@ -57,9 +59,31 @@ warehouse-waypoint-nav-[YOUR-NAME]/
 │   │   └── waypoint_mission.py
 │   ├── launch/
 │   │   └── waypoint_mission.launch.py
+│   ├── rviz/
+│   │   └── Nav2_waypoints.rviz
 │   ├── package.xml
 │   ├── setup.cfg
 │   └── setup.py
+├── warehouse_world/
+│   ├── config/
+│   │   └── gz_bridge_ros.yaml
+│   ├── image/
+│   │   └── warehouse_world.png
+│   ├── launch/
+│   │   └── warehouse_storage_launch.launch.py
+│   ├── maps/
+│   │   ├── warehouse_world_map.pgm
+│   │   └── warehouse_world_map.yaml
+│   ├── posegraph/
+│   │   ├── warehouse_world.data
+│   │   └── warehouse_world.posegraph
+│   ├── worlds/
+│   │   └── warehouse_storage.sdf
+│   ├── models/
+│   ├── rviz/
+│   │   └── warehouse.rviz
+│   ├── CMakeLists.txt
+│   └── package.xml
 ├── images/
 │   └── (mapping, localization, navigation, and waypoint marker screenshots)
 └── README.md
