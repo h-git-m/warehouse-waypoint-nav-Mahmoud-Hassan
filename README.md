@@ -508,15 +508,99 @@ BT navigator handing off to the controller server and successfully reaching the 
 
 ---
 
-## 15. Screenshots
+## 14. Screenshots
 
-<!-- Insert mapping, localization, navigation, path, and waypoint-marker screenshots here, e.g.: -->
-
-- `images/slam_full_map.png` — completed SLAM Toolbox map
-- `images/amcl_particle_convergence.png` — AMCL particle cloud converged around the robot
-- `images/nav2_costmaps_and_plan.png` — global/local costmaps with an active plan
-- `images/waypoint_markers_all_blue.png` — all four waypoints, mission not yet started
-- `images/waypoint_marker_active_green.png` — active goal shown in green mid-mission
+All screenshots referenced below are stored in the `images/` folder at the repository root.
+ 
+### Simulation Setup
+ 
+![TurtleBot3 Burger spawned in the warehouse world](images/turtlebot3_burger_warehouse_world.png)
+*TurtleBot3 Burger spawned and running inside `warehouse_world`.*
+ 
+### SLAM Toolbox Mapping
+ 
+![SLAM Toolbox actively building the map](images/SLAM_in_action.png)
+*SLAM Toolbox actively building the warehouse map while teleoperating the robot.*
+ 
+![Scan and odometry topics feeding SLAM](images/SLAM_scan_odom_topics.png)
+*`/scan` and `/odom` topics confirmed as active inputs to SLAM Toolbox.*
+ 
+![Saved map inspected in a PGM viewer](images/PGM_viewer.png)
+*The saved `warehouse_world_map.pgm` inspected visually with a PGM viewer.*
+ 
+![Saved map reloaded and displayed in RViz](images/load_map_RViz.png)
+*The saved map reloaded via `map_server` and displayed correctly in RViz (Transient Local QoS).*
+ 
+### AMCL Localization
+ 
+![Setting the robot's initial pose in RViz](images/AMCL_display_initial_pose.png)
+*Setting the robot's correct initial pose in RViz using 2D Pose Estimate.*
+ 
+![Initial AMCL pose estimate](images/AMCL_pose_initial.png)
+*Initial `/amcl_pose` reading immediately after setting the initial pose.*
+ 
+![AMCL pose updating as the robot moves](images/AMCL_pose_update.png)
+*`/amcl_pose` updating as the robot moves, confirming localization is live.*
+ 
+![LiDAR scan aligned with map walls](images/AMCL_tree_laser_align.png)
+*LiDAR scan cleanly aligned with the map's walls/obstacles.*
+ 
+![Particle cloud before convergence](images/AMCL_particle_cloud_0.png)
+*Particle cloud immediately after initial pose estimate — still spread out.*
+ 
+![Particle cloud after convergence](images/AMCL_particle_cloud_1.png)
+*Particle cloud tightly converged around the robot after driving around.*
+ 
+![TF tree showing map to odom to base_footprint](images/TF_tree.png)
+*TF tree confirming the `map → odom → base_footprint` chain is complete and available.*
+ 
+### Nav2 Navigation
+ 
+![Nav2 lifecycle nodes status check](images/NAV2_servers_status_check.png)
+*All Nav2 lifecycle nodes (`map_server`, `amcl`, `planner_server`, `controller_server`, `behavior_server`, `bt_navigator`) confirmed active.*
+ 
+![RViz displays required for Nav2](images/NAV2_RViz_req.png)
+*Required RViz displays configured: map, costmaps, TF, particle cloud, and paths.*
+ 
+![Sending a manual 2D Goal Pose](images/NAV2_2D_goal.png)
+*A manual 2D Goal Pose sent in RViz to test navigation before automation.*
+ 
+![Robot's planned path to the goal](images/NAV2_robot_path_plan.png)
+*Global plan computed and displayed from the robot's current pose to the goal.*
+ 
+![Goal reached confirmation](images/NAV2_goal_achieved.png)
+*Nav2 confirming the goal was reached successfully.*
+ 
+![Confirming cmd_vel message type](images/NAV2_confirm_cmd_vel_msg_type.png)
+*Confirming `/cmd_vel` uses `geometry_msgs/msg/Twist` as required.*
+ 
+### Autonomous Waypoint Mission
+ 
+![Waypoint markers topic in RViz](images/waypoint_marker_topic.png)
+*The `/waypoint_markers` MarkerArray topic added and displaying all four named waypoints in RViz.*
+ 
+![Navigating to the Loading Station](images/waypoint_loading.png)
+*Active navigation goal (green marker) set to the Loading Station.*
+ 
+![Waiting 30 seconds at the Loading Station](images/waypoint_loading_30s.png)
+*Robot holding position at the Loading Station during the required 30-second wait.*
+ 
+![Navigating to the Storage Area](images/waypoint_storage.png)
+*Active navigation goal (green marker) set to the Storage Area.*
+ 
+![Storage Area goal achieved](images/waypoint_storage_goal_achieved.png)
+*Confirmation that the Storage Area goal was successfully reached.*
+ 
+![Navigating to the Shipping Station](images/waypoint_shipping_station.png)
+*Active navigation goal (green marker) set to the Shipping Station.*
+ 
+![Returning to the Charging Station](images/waypoint_home_return.png)
+*Active navigation goal (green marker) set back to the Charging Station (Home) for the final leg.*
+ 
+![Home return goal achieved — mission complete](images/waypoint_home_return_goal_succeeded.png)
+*Confirmation that the robot successfully returned to the Charging Station, completing the full mission.*
+ 
+---
 
 ---
 
