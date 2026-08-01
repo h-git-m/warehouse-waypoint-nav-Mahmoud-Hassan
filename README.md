@@ -95,7 +95,7 @@ warehouse-waypoint-nav-Mahmoud-Hassan/
 |---|---|
 | `robot_navigation` | AMCL + full Nav2 bringup (planner, controller, behavior server, BT navigator), saved maps, and RViz configs |
 | `warehouse_waypoints` | Waypoint mission node: sends the ordered sequence of Nav2 goals, handles the 30s dwell, and publishes the `/waypoint_markers` MarkerArray |
-
+| `warehouse_world` | Custom Environment built by Etgah. Turtlebot3_burger urdf and gazebo plugins are integrated into this environment to fullfill task requirements. `warehouse_storage_launch.launch.py` is used to launch the environment with turtlebot3_burger at the origin |
 ---
 
 ## 3. Workspace Build Instructions
@@ -106,7 +106,7 @@ cd ~/workspaces/turtlebot_ws/src
 # Clone this repository package (warehouse_world)
 git clone https://github.com/ETGAH/warehouse_world.git
 
-cd ~/workspaces/turtlebot_ws
+cd ~/workspaces/turtlebot_ws or cd ..
 colcon build
 source install/setup.bash
 ```
@@ -140,7 +140,7 @@ cat /root/workspaces/turtlebot_ws/install/turtlebot3_gazebo/share/turtlebot3_gaz
 ```
 
 This `model.sdf` file is the one Gazebo actually spawns — it includes the `DiffDrive` and
-`JointStatePublisher` plugins, and is used in the `-file` argument of the `ros_gz_sim create` spawn node.
+`JointStatePublisher` plugins, and is used in the `-file` argument of the spawn node.
 (The plain URDF from `turtlebot3_description` has no `<gazebo>`/`<plugin>` tags at all, so spawning from it
 alone produces a robot with no working motion or joint states.)
 
@@ -152,7 +152,7 @@ grep -B3 -A15 "JointStatePublisher\|joint-state-publisher" \
 ```
 
 This confirmed the robot publishes joint states on `joint_states` (not the default long scoped topic path),
-so the `ros_gz_bridge` config was updated accordingly. Other required bridge entries — `/cmd_vel`, `/odom`,
+so the `gz_bridge_ros` config was updated accordingly. Other required bridge entries — `/cmd_vel`, `/odom`,
 `/tf`, and `/scan` — were added the same way.
 
 Once the launch file and bridge config were updated:
@@ -163,6 +163,8 @@ colcon build --packages-select warehouse_world
 source install/setup.bash
 ros2 launch warehouse_world warehouse_storage_launch.launch.py
 ```
+
+Alternatively, run the launch file directly inside gazebo by starting your workspace first and then selecting the gazebo launch file created for this workspace.
 
 This launch file:
 - Starts Gazebo
