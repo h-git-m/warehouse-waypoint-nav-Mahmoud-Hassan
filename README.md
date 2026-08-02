@@ -173,6 +173,26 @@ This launch file:
 - Creates the ROS–Gazebo bridge for all required topics
 - Spawns the robot into the simulation
 
+How to Move the Robot
+
+The robot can be driven in three ways:
+
+**1. Keyboard :**
+
+Uses standard WASD-style keys to publish `/cmd_vel`.
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+**2. Gazebo's built-in Teleop panel** — open the panel from the Gazebo GUI and use the on-screen controls to send velocity commands directly.
+
+**3. Terminal command:**
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.2}, angular: {z: 0.1333}}"
+```
+- `linear.x` controls forward/backward speed (positive = forward, negative = backward).
+- `angular.z` controls rotation (positive = turn left/counter-clockwise, negative = turn right/clockwise).
+-
 ---
 
 ## 5. Mapping the Warehouse with SLAM Toolbox
@@ -604,7 +624,7 @@ All screenshots referenced below are stored in the `images/` folder at the repos
 
 ---
 
-## 16. Demonstration Video
+## 15. Demonstration Video
 
 <!-- Link to the full narrated video here -->
 [Full narrated demonstration video](https://youtu.be/MPsmgasbI4c)
