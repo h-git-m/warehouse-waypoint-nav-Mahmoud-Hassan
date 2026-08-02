@@ -252,9 +252,6 @@ inspected with a PGM viewer extension in VS Code.
 
 **Reloading the saved map to verify it inside RViz independently of SLAM toolbox:**
 
-In RViz, add a **Map** display and — under its **QoS Settings** — set **Durability Policy** to
-**Transient Local**, otherwise the map will not appear.
-
 ```bash
 cd ~/workspaces/turtlebot_ws/src/robot_navigation/map
 ros2 run nav2_map_server map_server --ros-args -p yaml_filename:=warehouse_world_map.yaml
@@ -265,6 +262,9 @@ In another terminal:
 ```bash
 ros2 run nav2_util lifecycle_bringup map_server
 ```
+In RViz, add a **Map** display and — under its **QoS Settings** — set **Durability Policy** to
+**Transient Local**, otherwise the map will not appear. 
+
 ---
 
 ## 7. Launching and Testing AMCL
