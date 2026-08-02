@@ -239,7 +239,7 @@ source install/setup.bash
 
 ## 6. Saving the Warehouse Map
 
-Before closing any running terminals from step 5:
+Before closing any running terminals from section 5:
 
 ```bash
 mkdir -p ~/workspaces/turtlebot_ws/src/robot_navigation/map
@@ -292,7 +292,7 @@ Add the following displays with **Fixed Frame = `map`**:
 | TF | — | — |
 | ParticleCloud | `/particle_cloud` | Reliability Policy = **Best Effort** |
 
-> This configuration is saved and can be loaded directly from `rviz/AMCL.rviz`.
+> This configuration is saved and can be loaded directly from `robot_navigation/AMCL_warehouse.rviz`.
 >
 > **Known issue:** if the map fails to load after applying this configuration, kill the AMCL launch
 > terminal and re-run it.
@@ -359,7 +359,7 @@ ros2 lifecycle get /bt_navigator
 rviz2
 ```
 
-Add all the AMCL displays above, plus:
+Add all the AMCL displays demonstrated in Section 7, plus:
 
 | Display | Topic | Extra settings |
 |---|---|---|
@@ -368,7 +368,7 @@ Add all the AMCL displays above, plus:
 | — | `/plan/path` | Color = **orange** |
 | — | `/local_plan/path` | — |
 
-> This configuration is saved and can be loaded directly from `rviz/NAV2.rviz`.
+> This configuration is saved and can be loaded directly from `robot_navigation/NAV2.rviz`.
 
 Set the initial pose (as in Section 7), confirm the LiDAR aligns with the map walls, then test navigation:
 
