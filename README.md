@@ -607,4 +607,4 @@ All screenshots referenced below are stored in the `images/` folder at the repos
 ## 16. Demonstration Video
 
 <!-- Link to the full narrated video here -->
-[Full narrated demonstration video](#)
+[Full narrated demonstration video](https://youtu.be/MPsmgasbI4c)
