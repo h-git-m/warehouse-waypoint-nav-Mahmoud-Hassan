@@ -22,16 +22,18 @@ amcl:
     pf_z: 0.99
     resample_interval: 1
 
-    # Odometry noise
-    alpha1: 0.05
-    alpha2: 0.05
-    alpha3: 0.05
-    alpha4: 0.05
-    alpha5: 0.05
+    # Odometry noise — increase rotation-related terms so the filter
+    # has enough spread to actually correct heading drift via scan matching
+    alpha1: 0.1    # was 0.05 — rotation noise from rotation
+    alpha2: 0.1    # was 0.05 — rotation noise from translation
+    alpha3: 0.1    # was 0.05 — translation noise from translation
+    alpha4: 0.15   # was 0.05 — translation noise from rotation (biggest bump — this is the main rotational-drift term)
+    alpha5: 0.1    # was 0.05    
 
     # Laser model
     laser_model_type: "likelihood_field"
-    max_beams: 60
+    # Slightly more beams per scan improves correction accuracy per update
+    max_beams: 100   # was 60
     laser_min_range: -1.0
     laser_max_range: 12.0 #3.5 # matches TurtleBot3 LiDAR maximum range
     laser_likelihood_max_dist: 2.0
@@ -45,7 +47,8 @@ amcl:
 
     # Update settings
     update_min_d: 0.25
-    update_min_a: 0.2
+    # Update more frequently during turns, so corrections happen sooner   
+    update_min_a: 0.1 # was 0.2 (~5.7° instead of ~11.5°)
 
     # TF
     tf_broadcast: true
