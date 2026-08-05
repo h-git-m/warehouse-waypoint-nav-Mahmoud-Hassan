@@ -320,6 +320,24 @@ At time 633.200000000
 A small, stable correction like this confirms AMCL is actively publishing the `map → odom` transform and
 that `/amcl_pose` tracks the robot correctly while driving.
 
+**Tuning for rotational drift:** the LaserScan was initially observed to drift slightly out of alignment
+with the map during rotation. This was caused by odometry noise (`alpha`) parameters set too low to
+capture real rotational error, combined with an update threshold too coarse to correct it quickly:
+
+```yaml
+# amcl.yaml
+alpha1: 0.1    # was 0.05 — rotation noise from rotation
+alpha2: 0.1    # was 0.05 — rotation noise from translation
+alpha3: 0.1    # was 0.05 — translation noise from translation
+alpha4: 0.15   # was 0.05 — translation noise from rotation (main driver of heading drift)
+alpha5: 0.1    # was 0.05
+update_min_a: 0.1   # was 0.2 — correct heading more often during turns (~5.7° vs ~11.5°)
+max_beams: 100       # was 60 — stronger correction signal per update
+```
+
+After this change, the scan stays visually locked to the map walls throughout rotation, with no
+lag/snap-back behavior.
+
 ---
 
 ## 8. Launching the Complete Nav2 System
