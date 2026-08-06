@@ -5,6 +5,8 @@ named-waypoint delivery mission using Nav2 — starting and ending at a Charging
 Station (with a mandatory 30-second dwell), a Storage Area, and a Shipping Station. All waypoints are
 visualized live in RViz as color-coded markers (blue = inactive, green = active navigation goal).
 
+Note: This project is counted as a Final project for ROS2 Robotics Masterclass provided by Etgah.
+
 ---
 
 ## 1. Project Overview and Mission
